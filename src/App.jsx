@@ -1,7 +1,9 @@
-import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import icons from "./helpers/icons";
 
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Products from "./pages/Products";
 import Product from "./pages/Product";
 import Contact from "./pages/Contact";
@@ -17,13 +19,8 @@ icons();
 function App() {
   return (
     <div className="App">
-      <h1>This is the Website</h1>
       <BrowserRouter>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/products">Products</NavLink>
-        <NavLink to="/about">About</NavLink>
-        <NavLink to="/cart">Cart</NavLink>
-        <NavLink to="/contact">Contact</NavLink>
+        <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/products" component={Products} />
@@ -34,6 +31,7 @@ function App() {
           <Route component={NoPage} />
         </Switch>
       </BrowserRouter>
+      <Footer />
     </div>
   );
 }
