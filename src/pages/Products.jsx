@@ -17,8 +17,8 @@ export default function Products() {
         products.map((product) => {
           return (
             <div className="product-card-wrapper">
-              <h3>{product.title}</h3>
               <img src={product.image} alt="" />
+              <h3>{product.title}</h3>
               <p>{product.description}</p>
               <button>Add to Cart</button>
               <button>View More Details</button>
