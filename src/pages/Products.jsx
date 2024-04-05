@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -21,7 +22,9 @@ export default function Products() {
               <h3>{product.title}</h3>
               <p>{product.description}</p>
               <button>Add to Cart</button>
-              <button>View More Details</button>
+              <NavLink to={`/products/${product.id}`}>
+                View More Details
+              </NavLink>
             </div>
           );
         })}

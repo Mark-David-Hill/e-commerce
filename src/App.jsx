@@ -23,7 +23,8 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/products" component={Products} />
+          <Route exact path="/products" component={Products} />
+          <Route path="/products/:id" component={Product} />
           <Route path="/about" component={About} />
           <Route path="/cart" component={Cart} />
           <Route path="/contact" component={Contact} />
