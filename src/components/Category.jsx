@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+
 import electronics from "../assets/electronics.jpg";
 import jewelry from "../assets/jewelry.jpg";
 import womens from "../assets/womens.jpg";
@@ -24,7 +26,16 @@ export default function Category(props) {
       />
       <div className="category-wrapper">
         <h2>{categoryName}</h2>
-        <button>View Category</button>
+        <NavLink
+          to={{
+            pathname: "/products",
+            state: {
+              categories: [categoryName],
+            },
+          }}
+        >
+          View Category
+        </NavLink>
       </div>
     </div>
   );

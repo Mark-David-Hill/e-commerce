@@ -6,7 +6,7 @@ export default function Home() {
       <div className="hero-wrapper">
         <Category categoryName={"women's clothing"} />
         <Category categoryName={"men's clothing"} />
-        <Category categoryName={"jewelry"} />
+        <Category categoryName={"jewelery"} />
         <Category categoryName={"electronics"} />
       </div>
     </div>

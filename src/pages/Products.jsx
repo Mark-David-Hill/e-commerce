@@ -10,7 +10,7 @@ export default function Products(props) {
     "jewelery",
     "electronics",
   ]);
-  const checkboxContainer =
+  const checkboxWrapper =
     document.getElementsByClassName("checkbox-wrapper")[0];
 
   const truncate = (str) => {
@@ -19,8 +19,8 @@ export default function Products(props) {
 
   const updateCategories = () => {
     let checkedCategories = [];
-    for (let i = 0; i < checkboxContainer.children.length; i++) {
-      const element = checkboxContainer.children[i];
+    for (let i = 0; i < checkboxWrapper.children.length; i++) {
+      const element = checkboxWrapper.children[i];
       if (element.type === "checkbox" && element.checked) {
         checkedCategories.push(element.value);
       }
@@ -29,6 +29,32 @@ export default function Products(props) {
   };
 
   useEffect(() => {
+    if (props?.location?.state?.categories) {
+      let chosenCategory = props.location.state.categories[0];
+      setCategories(chosenCategory);
+      if (chosenCategory === "women's clothing") {
+        document.getElementsByName("category1")[0].checked = true;
+        document.getElementsByName("category2")[0].checked = false;
+        document.getElementsByName("category3")[0].checked = false;
+        document.getElementsByName("category4")[0].checked = false;
+      } else if (chosenCategory === "men's clothing") {
+        document.getElementsByName("category1")[0].checked = false;
+        document.getElementsByName("category2")[0].checked = true;
+        document.getElementsByName("category3")[0].checked = false;
+        document.getElementsByName("category4")[0].checked = false;
+      } else if (chosenCategory === "jewelery") {
+        document.getElementsByName("category1")[0].checked = false;
+        document.getElementsByName("category2")[0].checked = false;
+        document.getElementsByName("category3")[0].checked = true;
+        document.getElementsByName("category4")[0].checked = false;
+      } else if (chosenCategory === "electronics") {
+        document.getElementsByName("category1")[0].checked = false;
+        document.getElementsByName("category2")[0].checked = false;
+        document.getElementsByName("category3")[0].checked = false;
+        document.getElementsByName("category4")[0].checked = true;
+      }
+    }
+    checkboxWrapper && updateCategories();
     fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
       .then((json) => setProducts(json));
@@ -48,7 +74,7 @@ export default function Products(props) {
       <p>Categories:</p>
       <div className="checkbox-wrapper" onClick={() => updateCategories()}>
         <input
-          defaultChecked
+          defaultChecked="true"
           type="checkbox"
           id="category1"
           name="category1"
@@ -56,7 +82,7 @@ export default function Products(props) {
         />
         <label htmlFor="category1"> Women's Clothing</label>
         <input
-          defaultChecked
+          defaultChecked="true"
           type="checkbox"
           id="category2"
           name="category2"
@@ -64,7 +90,7 @@ export default function Products(props) {
         />
         <label htmlFor="category2"> Men's Clothing</label>
         <input
-          defaultChecked
+          defaultChecked="true"
           type="checkbox"
           id="category3"
           name="category3"
@@ -72,7 +98,7 @@ export default function Products(props) {
         />
         <label htmlFor="category3"> Jewelery</label>
         <input
-          defaultChecked
+          defaultChecked="true"
           type="checkbox"
           id="category4"
           name="category4"
