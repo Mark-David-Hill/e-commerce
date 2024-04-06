@@ -10,14 +10,14 @@ export default function Products(props) {
     "jewelery",
     "electronics",
   ]);
-  const checkboxWrapper =
-    document.getElementsByClassName("checkbox-wrapper")[0];
+  // const checkboxWrapper =
+  //   document.getElementsByClassName("checkbox-wrapper")[0];
 
   const truncate = (str) => {
     return str.length > 50 ? str.substring(0, 47) + "..." : str;
   };
 
-  const updateCategories = () => {
+  const updateCategories = (checkboxWrapper) => {
     let checkedCategories = [];
     for (let i = 0; i < checkboxWrapper.children.length; i++) {
       const element = checkboxWrapper.children[i];
@@ -53,8 +53,10 @@ export default function Products(props) {
         document.getElementsByName("category3")[0].checked = false;
         document.getElementsByName("category4")[0].checked = true;
       }
+      updateCategories(document.getElementsByClassName("checkbox-wrapper")[0]);
     }
-    checkboxWrapper && updateCategories();
+    document.getElementsByClassName("checkbox-wrapper")[0] &&
+      updateCategories(document.getElementsByClassName("checkbox-wrapper")[0]);
     fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
       .then((json) => setProducts(json));
@@ -72,7 +74,14 @@ export default function Products(props) {
         {orderBy === "desc" ? "⌄" : "^"}
       </button>
       <p>Categories:</p>
-      <div className="checkbox-wrapper" onClick={() => updateCategories()}>
+      <div
+        className="checkbox-wrapper"
+        onClick={() =>
+          updateCategories(
+            document.getElementsByClassName("checkbox-wrapper")[0]
+          )
+        }
+      >
         <input
           defaultChecked="true"
           type="checkbox"
@@ -112,13 +121,13 @@ export default function Products(props) {
           .filter(
             (product) =>
               (categories.includes("women's clothing") &&
-                product.category.includes("women's clothing")) ||
+                product.category === "women's clothing") ||
               (categories.includes("men's clothing") &&
-                product.category.includes("men's clothing")) ||
+                product.category === "men's clothing") ||
               (categories.includes("jewelery") &&
-                product.category.includes("jewelery")) ||
+                product.category === "jewelery") ||
               (categories.includes("electronics") &&
-                product.category.includes("electronics"))
+                product.category === "electronics")
           )
           .map((product) => {
             return (
