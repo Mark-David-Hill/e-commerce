@@ -34,7 +34,7 @@ export default function Category(props) {
             },
           }}
         >
-          View Category
+          View Products
         </NavLink>
       </div>
     </div>

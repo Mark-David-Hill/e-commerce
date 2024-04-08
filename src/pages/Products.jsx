@@ -10,15 +10,13 @@ export default function Products(props) {
     "jewelery",
     "electronics",
   ]);
-  // const checkboxWrapper =
-  //   document.getElementsByClassName("checkbox-wrapper")[0];
 
   const truncate = (str) => {
     return str.length > 50 ? str.substring(0, 47) + "..." : str;
   };
 
   const updateCategories = (checkboxWrapper) => {
-    let checkedCategories = [];
+    const checkedCategories = [];
     for (let i = 0; i < checkboxWrapper.children.length; i++) {
       const element = checkboxWrapper.children[i];
       if (element.type === "checkbox" && element.checked) {
@@ -30,24 +28,24 @@ export default function Products(props) {
 
   useEffect(() => {
     if (props?.location?.state?.categories) {
-      let chosenCategory = props.location.state.categories[0];
+      const chosenCategory = props.location.state.categories[0];
       setCategories(chosenCategory);
-      if (chosenCategory === "women's clothing") {
+      if (chosenCategory === "men's clothing") {
         document.getElementsByName("category1")[0].checked = true;
         document.getElementsByName("category2")[0].checked = false;
         document.getElementsByName("category3")[0].checked = false;
         document.getElementsByName("category4")[0].checked = false;
-      } else if (chosenCategory === "men's clothing") {
+      } else if (chosenCategory === "jewelery") {
         document.getElementsByName("category1")[0].checked = false;
         document.getElementsByName("category2")[0].checked = true;
         document.getElementsByName("category3")[0].checked = false;
         document.getElementsByName("category4")[0].checked = false;
-      } else if (chosenCategory === "jewelery") {
+      } else if (chosenCategory === "electronics") {
         document.getElementsByName("category1")[0].checked = false;
         document.getElementsByName("category2")[0].checked = false;
         document.getElementsByName("category3")[0].checked = true;
         document.getElementsByName("category4")[0].checked = false;
-      } else if (chosenCategory === "electronics") {
+      } else if (chosenCategory === "women's clothing") {
         document.getElementsByName("category1")[0].checked = false;
         document.getElementsByName("category2")[0].checked = false;
         document.getElementsByName("category3")[0].checked = false;
@@ -87,33 +85,33 @@ export default function Products(props) {
           type="checkbox"
           id="category1"
           name="category1"
-          value="women's clothing"
+          value="men's clothing"
         />
-        <label htmlFor="category1"> Women's Clothing</label>
+        <label htmlFor="category1"> Men's Clothing</label>
         <input
           defaultChecked="true"
           type="checkbox"
           id="category2"
           name="category2"
-          value="men's clothing"
+          value="jewelery"
         />
-        <label htmlFor="category2"> Men's Clothing</label>
+        <label htmlFor="category2"> Jewelery</label>
         <input
           defaultChecked="true"
           type="checkbox"
           id="category3"
           name="category3"
-          value="jewelery"
+          value="electronics"
         />
-        <label htmlFor="category3"> Jewelery</label>
+        <label htmlFor="category3"> Electronics</label>
         <input
           defaultChecked="true"
           type="checkbox"
           id="category4"
           name="category4"
-          value="electronics"
+          value="women's clothing"
         />
-        <label htmlFor="category4"> Electronics</label>
+        <label htmlFor="category4"> Women's Clothing</label>
         <br />
       </div>
       {products &&
