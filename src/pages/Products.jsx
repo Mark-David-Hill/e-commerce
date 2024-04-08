@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 export default function Products(props) {
   const [products, setProducts] = useState([]);
   const [orderBy, setOrderBy] = useState("desc");
+  const [orderCategory, setOrderCategory] = useState("id");
   const [categories, setCategories] = useState([
     "women's clothing",
     "men's clothing",
@@ -25,6 +26,17 @@ export default function Products(props) {
     }
     setCategories(checkedCategories);
   };
+
+  const handleSelect = (event) => {
+    setOrderCategory(event.target.value);
+  };
+
+  const idDesc = (a, b) => a.id - b.id;
+  const idAsc = (a, b) => b.id - a.id;
+  const alphabeticalDesc = (a, b) => a.title.localeCompare(b.title);
+  const alphabeticalAsc = (a, b) => b.title.localeCompare(a.title);
+  const priceDesc = (a, b) => a.price - b.price;
+  const priceAsc = (a, b) => b.price - a.price;
 
   useEffect(() => {
     if (props?.location?.state?.categories) {
@@ -63,8 +75,9 @@ export default function Products(props) {
   return (
     <div className="products-container">
       <h1>Products</h1>
-      <select name="filter-by" id="filter-by">
-        <option value="id">Sort By Id</option>
+      <select name="filter-by" id="filter-by" onChange={handleSelect}>
+        <option value="id">Sort By ID:</option>
+        <option value="price">By Price</option>
         <option value="alphabet">Alphabetical</option>
       </select>
       <input type="text" placeholder="Search Products" />
@@ -127,10 +140,26 @@ export default function Products(props) {
               (categories.includes("electronics") &&
                 product.category === "electronics")
           )
+          .sort(
+            orderCategory === "id"
+              ? orderBy === "asc"
+                ? idAsc
+                : idDesc
+              : orderCategory === "alphabet"
+              ? orderBy === "asc"
+                ? alphabeticalAsc
+                : alphabeticalDesc
+              : orderCategory === "price"
+              ? orderBy === "asc"
+                ? priceAsc
+                : priceDesc
+              : undefined
+          )
           .map((product) => {
             return (
               <div className="product-card-wrapper" key={product.id}>
                 <img src={product.image} alt="" />
+                <p>${product.price}</p>
                 <h3>{product.title}</h3>
                 <p>{truncate(product.description)}</p>
                 <button>Add to Cart</button>
