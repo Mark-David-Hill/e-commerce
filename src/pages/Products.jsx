@@ -1,3 +1,4 @@
+import { faDisplay } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
@@ -5,6 +6,7 @@ export default function Products(props) {
   const [products, setProducts] = useState([]);
   const [orderBy, setOrderBy] = useState("desc");
   const [orderCategory, setOrderCategory] = useState("id");
+  const [searchTerm, setSearchTerm] = useState("");
   const [categories, setCategories] = useState([
     "women's clothing",
     "men's clothing",
@@ -28,7 +30,12 @@ export default function Products(props) {
   };
 
   const handleSelect = (event) => {
-    setOrderCategory(event.target.value);
+    setOrderCategory(event.target.value.toLowerCase());
+  };
+
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+    console.log(event.target.value);
   };
 
   const idDesc = (a, b) => a.id - b.id;
@@ -80,7 +87,11 @@ export default function Products(props) {
         <option value="price">By Price</option>
         <option value="alphabet">Alphabetical</option>
       </select>
-      <input type="text" placeholder="Search Products" />
+      <input
+        type="text"
+        placeholder="Search Products"
+        onChange={handleSearch}
+      />
       <button onClick={() => setOrderBy(orderBy === "desc" ? "asc" : "desc")}>
         {orderBy === "desc" ? "⌄" : "^"}
       </button>
@@ -157,7 +168,19 @@ export default function Products(props) {
           )
           .map((product) => {
             return (
-              <div className="product-card-wrapper" key={product.id}>
+              <div
+                className="product-card-wrapper"
+                key={product.id}
+                style={{
+                  display:
+                    !searchTerm ||
+                    (searchTerm &&
+                      (product.title.toLowerCase().includes(searchTerm) ||
+                        product.description.toLowerCase().includes(searchTerm)))
+                      ? "flex"
+                      : "none",
+                }}
+              >
                 <img src={product.image} alt="" />
                 <p>${product.price}</p>
                 <h3>{product.title}</h3>
