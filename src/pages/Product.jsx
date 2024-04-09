@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Product(props) {
   const { id } = props.match.params;
@@ -12,7 +13,7 @@ export default function Product(props) {
 
   return (
     <div className="product-container">
-      {productData && (
+      {productData ? (
         <div>
           <h1>{productData.title}</h1>
           <p>Category: {productData.category}</p>
@@ -25,6 +26,8 @@ export default function Product(props) {
           <button>Add to Cart</button>
           <img src={productData.image} width={"20%"} alt="Product" />
         </div>
+      ) : (
+        <FontAwesomeIcon icon="fa-circle-notch" spin size="xl" />
       )}
     </div>
   );

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import CategoryFilter from "./CategoryFilter";
 import ProductCard from "./ProductCard";
@@ -123,8 +124,7 @@ export default function Products(props) {
         <h3>No results. Please select a category</h3>
       ) : searchTerm.trim() !== "" && numResults === 0 ? (
         <h3>No products match your search. Please try again.</h3>
-      ) : (
-        products &&
+      ) : products.length > 0 ? (
         products
           .filter(categoryFilterCriteria)
           .sort(sortCriteria)
@@ -137,6 +137,8 @@ export default function Products(props) {
               />
             );
           })
+      ) : (
+        <FontAwesomeIcon icon="fa-circle-notch" spin size="xl" />
       )}
     </div>
   );
