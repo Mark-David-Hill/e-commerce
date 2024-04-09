@@ -45,7 +45,6 @@ export default function Contact() {
           required
         ></textarea>
         <input type="submit" />
-        {/* <button onClick={handleSubmit}>Submit</button> */}
       </form>
     </div>
   );

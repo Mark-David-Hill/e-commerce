@@ -9,6 +9,7 @@ export default function Products(props) {
   const [orderBy, setOrderBy] = useState("desc");
   const [orderCategory, setOrderCategory] = useState("id");
   const [searchTerm, setSearchTerm] = useState("");
+  const [numResults, setNumResults] = useState(0);
   const [categories, setCategories] = useState([
     "women's clothing",
     "men's clothing",
@@ -93,6 +94,20 @@ export default function Products(props) {
       .then((json) => setProducts(json));
   }, [props?.location?.state?.categories]);
 
+  useEffect(() => {
+    setNumResults(0);
+    if (products) {
+      products.forEach((product) => {
+        searchTerm &&
+          (product.title.toLowerCase().includes(searchTerm) ||
+            product.description
+              .toLowerCase()
+              .includes(searchTerm.toLowerCase())) &&
+          setNumResults((prev) => prev + 1);
+      });
+    }
+  }, [searchTerm, products, numResults]);
+
   return (
     <div className="products-container">
       <h1>Products</h1>
@@ -104,7 +119,12 @@ export default function Products(props) {
       />
       <CategoryFilter updateCategories={updateCategories} />
 
-      {products &&
+      {categories.length === 0 ? (
+        <h3>No results. Please select a category</h3>
+      ) : searchTerm.trim() !== "" && numResults === 0 ? (
+        <h3>No products match your search. Please try again.</h3>
+      ) : (
+        products &&
         products
           .filter(categoryFilterCriteria)
           .sort(sortCriteria)
@@ -116,7 +136,8 @@ export default function Products(props) {
                 searchTerm={searchTerm}
               />
             );
-          })}
+          })
+      )}
     </div>
   );
 }
