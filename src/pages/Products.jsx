@@ -16,17 +16,6 @@ export default function Products(props) {
     "electronics",
   ]);
 
-  const updateCategories = (checkboxWrapper) => {
-    const checkedCategories = [];
-    for (let i = 0; i < checkboxWrapper.children.length; i++) {
-      const element = checkboxWrapper.children[i];
-      if (element.type === "checkbox" && element.checked) {
-        checkedCategories.push(element.value);
-      }
-    }
-    setCategories(checkedCategories);
-  };
-
   const idDesc = (a, b) => a.id - b.id;
   const idAsc = (a, b) => b.id - a.id;
   const alphabeticalDesc = (a, b) => a.title.localeCompare(b.title);
@@ -49,6 +38,17 @@ export default function Products(props) {
         : priceDesc
       : undefined;
 
+  const updateCategories = (checkboxWrapper) => {
+    const checkedCategories = [];
+    for (let i = 0; i < checkboxWrapper.children.length; i++) {
+      const element = checkboxWrapper.children[i];
+      if (element.type === "checkbox" && element.checked) {
+        checkedCategories.push(element.value);
+      }
+    }
+    setCategories(checkedCategories);
+  };
+
   const categoryFilterCriteria = (product) =>
     (categories.includes("women's clothing") &&
       product.category === "women's clothing") ||
@@ -58,8 +58,8 @@ export default function Products(props) {
     (categories.includes("electronics") && product.category === "electronics");
 
   useEffect(() => {
-    console.log("use effect");
-
+    const checkboxWrapper =
+      document.getElementsByClassName("checkbox-wrapper")[0];
     if (props?.location?.state?.categories) {
       const chosenCategory = props.location.state.categories[0];
       const checkboxes = [
@@ -85,14 +85,13 @@ export default function Products(props) {
       } else if (chosenCategory === "women's clothing") {
         setCheckboxes(4);
       }
-      updateCategories(document.getElementsByClassName("checkbox-wrapper")[0]);
+      updateCategories(checkboxWrapper);
     }
-    document.getElementsByClassName("checkbox-wrapper")[0] &&
-      updateCategories(document.getElementsByClassName("checkbox-wrapper")[0]);
+    checkboxWrapper && updateCategories(checkboxWrapper);
     fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
       .then((json) => setProducts(json));
-  }, []);
+  }, [props?.location?.state?.categories]);
 
   return (
     <div className="products-container">

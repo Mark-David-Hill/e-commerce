@@ -7,10 +7,7 @@ export default function Product(props) {
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${id}`)
       .then((res) => res.json())
-      .then((json) => {
-        setProductData(json);
-        console.log(json);
-      });
+      .then((json) => setProductData(json));
   }, [id]);
 
   return (
@@ -25,6 +22,7 @@ export default function Product(props) {
             reviews{" "}
           </p>
           <p>{productData.description}</p>
+          <button>Add to Cart</button>
           <img src={productData.image} width={"20%"} alt="Product" />
         </div>
       )}
