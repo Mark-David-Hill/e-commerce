@@ -10,8 +10,13 @@ export default function ProductCard(props) {
     return str.length > 50 ? str.substring(0, 47) + "..." : str;
   };
 
-  const handleClick = (id) => {
-    setCartItems((prev) => [...prev, id]);
+  const handleClick = (product) => {
+    const itemObj = {
+      count: 1,
+      product: product,
+    };
+    console.log(itemObj);
+    setCartItems((prev) => [...prev, itemObj]);
   };
 
   return (
@@ -31,8 +36,15 @@ export default function ProductCard(props) {
       <p>${product.price}</p>
       <h3>{product.title}</h3>
       <p>{truncate(product.description)}</p>
-      <h4>{cartItems && cartItems}</h4>
-      <button onClick={() => handleClick(product.id)}>Add to Cart</button>
+      {cartItems
+        .map((item) => {
+          return item.product.id;
+        })
+        .includes(product.id) ? (
+        <NavLink to="/cart">Go to Checkout</NavLink>
+      ) : (
+        <button onClick={() => handleClick(product)}>Add to Cart</button>
+      )}
       <NavLink to={`/products/${product.id}`}>View More Details</NavLink>
     </div>
   );
