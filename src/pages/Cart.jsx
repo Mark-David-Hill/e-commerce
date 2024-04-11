@@ -1,22 +1,26 @@
 import { useContext } from "react";
 import { CartContext } from "../components/CartProvider";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 export default function Cart() {
   const { cartItems, setCartItems } = useContext(CartContext);
 
-  const removeItem = (id) => {
-    console.log("remove item with id #", id);
-    // setCartItems((prev) => {
-    //   return prev.map((item) => {
-    //     if (item.product.id === id) {
-    //       return null;
-    //     }
-    //     return item;
-    //   });
-    // });
-  };
-
   const adjustCount = (id, shouldIncrement) => {
+    if (
+      !shouldIncrement &&
+      cartItems.find((item) => item.product.id === id).count <= 1
+    ) {
+      const choice = prompt(
+        "Are you sure you want to remove this from the cart? (yes/no)"
+      );
+      if (choice.toLowerCase() !== "y" && choice.toLowerCase() !== "yes") {
+        return;
+      } else {
+        alert("Item was removed from cart");
+      }
+    }
+
     setCartItems((prev) => {
       return prev.map((item) => {
         if (item.product.id === id) {
@@ -24,7 +28,7 @@ export default function Cart() {
             ...item,
             count: shouldIncrement
               ? item.count + 1
-              : item.count > 1
+              : item.count > 0
               ? item.count - 1
               : item.count,
           };
@@ -45,14 +49,18 @@ export default function Cart() {
               <p>
                 {item.product.title} x {item.count}
               </p>
-              <button onClick={() => removeItem(item.product.id)}>
+              {/* <button onClick={() => removeItem(item.product.id)}>
                 Remove from Cart
-              </button>
+              </button> */}
               <button
                 onClick={() => adjustCount(item.product.id, false)}
-                disabled={item.count <= 1}
+                disabled={item.count < 1}
               >
-                -
+                {item.count === 1 ? (
+                  <FontAwesomeIcon icon="fa-trash" color="black" />
+                ) : (
+                  "-"
+                )}
               </button>
               <button onClick={() => adjustCount(item.product.id, true)}>
                 +

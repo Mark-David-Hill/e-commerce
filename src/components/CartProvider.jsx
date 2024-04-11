@@ -21,7 +21,6 @@ export default function CartProvider({ children }) {
           };
           items.push(itemObj);
         });
-        // console.log(items.find((item) => item.product.id === 5));
         setCartItems(items);
       });
   }, []);
