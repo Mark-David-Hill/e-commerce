@@ -20,7 +20,13 @@ export default function Navbar() {
         <NavLink to="/cart">
           <FontAwesomeIcon icon="fa-cart-shopping" />
         </NavLink>
-        <p>{cartItems.length}</p>
+        <p>
+          {
+            cartItems.filter((item) => {
+              return item.count > 0;
+            }).length
+          }
+        </p>
       </div>
     </div>
   );

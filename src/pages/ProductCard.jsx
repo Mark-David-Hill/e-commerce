@@ -11,13 +11,20 @@ export default function ProductCard(props) {
   };
 
   const handleClick = (product) => {
-    const itemObj = {
-      count: 1,
-      product: product,
-    };
-    console.log(itemObj);
-    setCartItems((prev) => [...prev, itemObj]);
+    setCartItems((prev) => {
+      return prev.map((item) => {
+        if (item.product.id === product.id) {
+          return {
+            ...item,
+            count: 1,
+          };
+        }
+        return item;
+      });
+    });
   };
+
+  const findItemById = (id) => cartItems.find((item) => item.product.id === id);
 
   return (
     <div
@@ -36,16 +43,12 @@ export default function ProductCard(props) {
       <p>${product.price}</p>
       <h3>{product.title}</h3>
       <p>{truncate(product.description)}</p>
-      {cartItems
-        .map((item) => {
-          return item.product.id;
-        })
-        .includes(product.id) ? (
+      {cartItems.length > 0 && findItemById(product.id).count > 0 ? (
         <NavLink to="/cart">Go to Checkout</NavLink>
       ) : (
         <button onClick={() => handleClick(product)}>Add to Cart</button>
       )}
-      <NavLink to={`/products/${product.id}`}>View More Details</NavLink>
+      <NavLink to={`/products/${product.id}`}> View More Details</NavLink>
     </div>
   );
 }

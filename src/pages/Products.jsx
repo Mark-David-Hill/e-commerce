@@ -1,12 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import CategoryFilter from "./CategoryFilter";
 import ProductCard from "./ProductCard";
 import Search from "./Search";
+import { CartContext } from "../components/CartProvider";
 
 export default function Products(props) {
-  const [products, setProducts] = useState([]);
+  const { cartItems } = useContext(CartContext);
   const [orderBy, setOrderBy] = useState("desc");
   const [orderCategory, setOrderCategory] = useState("id");
   const [searchTerm, setSearchTerm] = useState("");
@@ -90,24 +91,21 @@ export default function Products(props) {
       updateCategories(checkboxWrapper);
     }
     checkboxWrapper && updateCategories(checkboxWrapper);
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((json) => setProducts(json));
   }, [props?.location?.state?.categories]);
 
   useEffect(() => {
     setNumResults(0);
-    if (products) {
-      products.forEach((product) => {
+    if (cartItems) {
+      cartItems.forEach((item) => {
         searchTerm &&
-          (product.title.toLowerCase().includes(searchTerm) ||
-            product.description
+          (item.product.title.toLowerCase().includes(searchTerm) ||
+            item.product.description
               .toLowerCase()
               .includes(searchTerm.toLowerCase())) &&
           setNumResults((prev) => prev + 1);
       });
     }
-  }, [searchTerm, products, numResults]);
+  }, [searchTerm, cartItems, numResults]);
 
   return (
     <div className="products-container">
@@ -124,8 +122,9 @@ export default function Products(props) {
         <h3>No results. Please select a category</h3>
       ) : searchTerm.trim() !== "" && numResults === 0 ? (
         <h3>No products match your search. Please try again.</h3>
-      ) : products.length > 0 ? (
-        products
+      ) : cartItems.length > 0 ? (
+        cartItems
+          .map((item) => item.product)
           .filter(categoryFilterCriteria)
           .sort(sortCriteria)
           .map((product) => {

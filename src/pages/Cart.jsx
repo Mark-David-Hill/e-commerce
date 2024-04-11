@@ -37,27 +37,29 @@ export default function Cart() {
   return (
     <div className="cart-container">
       <h1>Here's the cart page</h1>
-      {cartItems.map((item) => {
-        return (
-          <div key={item.product.id}>
-            <p>
-              {item.product.title} x {item.count}
-            </p>
-            <button onClick={() => removeItem(item.product.id)}>
-              Remove from Cart
-            </button>
-            <button
-              onClick={() => adjustCount(item.product.id, false)}
-              disabled={item.count <= 1}
-            >
-              -
-            </button>
-            <button onClick={() => adjustCount(item.product.id, true)}>
-              +
-            </button>
-          </div>
-        );
-      })}
+      {cartItems
+        .filter((item) => item.count > 0)
+        .map((item) => {
+          return (
+            <div key={item.product.id}>
+              <p>
+                {item.product.title} x {item.count}
+              </p>
+              <button onClick={() => removeItem(item.product.id)}>
+                Remove from Cart
+              </button>
+              <button
+                onClick={() => adjustCount(item.product.id, false)}
+                disabled={item.count <= 1}
+              >
+                -
+              </button>
+              <button onClick={() => adjustCount(item.product.id, true)}>
+                +
+              </button>
+            </div>
+          );
+        })}
     </div>
   );
 }
