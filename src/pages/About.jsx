@@ -16,6 +16,14 @@ export default function About() {
         along the way, but it was still helpeful for getting a general idea of
         where I was going and what steps I could begin to take.
       </p>
+      <p>
+        One example of a challenge from this project was that as I was building
+        out the cart functionality It became difficult to work with the products
+        data that had been fetched, as it was being passed around and used in
+        several places. The problem was solved by adding the array of fetched
+        product data to context so it could be more easily used in conjunction
+        with the cart and other pages.
+      </p>
       <h2>Instructions</h2>
       <p>Explain the process of your capstone</p>
       <p>

@@ -43,12 +43,12 @@ export default function ProductCard(props) {
       <p>${product.price}</p>
       <h3>{product.title}</h3>
       <p>{truncate(product.description)}</p>
+      <NavLink to={`/products/${product.id}`}> View More Details</NavLink>
       {cartItems.length > 0 && findItemById(product.id).count > 0 ? (
         <NavLink to="/cart">Go to Checkout</NavLink>
       ) : (
         <button onClick={() => handleClick(product)}>Add to Cart</button>
       )}
-      <NavLink to={`/products/${product.id}`}> View More Details</NavLink>
     </div>
   );
 }

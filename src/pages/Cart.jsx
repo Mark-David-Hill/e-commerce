@@ -38,9 +38,64 @@ export default function Cart() {
     });
   };
 
+  const handleCheckout = () => {
+    alert(
+      `Your order has been processed. Please allow for 1-3 business days for your items to be shipped. Subtotal: ${getSubtotal()}, Shipping: ${getShippingPrice()}, Total: ${getTotal()}`
+    );
+    setCartItems((prev) => {
+      return prev.map((item) => {
+        return {
+          ...item,
+          count: 0,
+        };
+      });
+    });
+  };
+
+  const getCartItemsCount = () => {
+    let totalItemCount = 0;
+    cartItems.forEach((item) => {
+      totalItemCount += item.count;
+    });
+    return totalItemCount;
+  };
+
+  const getSubtotal = () => {
+    let subtotal = 0;
+    cartItems.forEach((item) => {
+      subtotal += item.product.price * item.count;
+    });
+    return subtotal;
+  };
+
+  const getShippingPrice = () => {
+    let shippingPrice = 0;
+    cartItems.forEach((item) => {
+      shippingPrice += 1.5 * item.count;
+    });
+    return shippingPrice;
+  };
+
+  const getTotal = () => {
+    return getSubtotal() + getShippingPrice();
+  };
+
   return (
     <div className="cart-container">
       <h1>Here's the cart page</h1>
+      <p>
+        {getCartItemsCount() === 0
+          ? "No Items in Cart"
+          : getCartItemsCount() === 1
+          ? "1 Item in Cart"
+          : `${getCartItemsCount()} Items in Cart`}
+      </p>
+      <p>Subtotal: ${getSubtotal().toFixed(2)}</p>
+      <p>Shipping: ${getShippingPrice().toFixed(2)}</p>
+      <p>Total: ${getTotal().toFixed(2)}</p>
+      <button onClick={handleCheckout} disabled={getCartItemsCount() < 1}>
+        Proceed to Checkout
+      </button>
       {cartItems
         .filter((item) => item.count > 0)
         .map((item) => {
@@ -49,9 +104,6 @@ export default function Cart() {
               <p>
                 {item.product.title} x {item.count}
               </p>
-              {/* <button onClick={() => removeItem(item.product.id)}>
-                Remove from Cart
-              </button> */}
               <button
                 onClick={() => adjustCount(item.product.id, false)}
                 disabled={item.count < 1}
