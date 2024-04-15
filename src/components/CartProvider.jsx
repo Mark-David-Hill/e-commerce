@@ -18,6 +18,7 @@ export default function CartProvider({ children }) {
           const itemObj = {
             count: 0,
             product: product,
+            timeAdded: null,
           };
           items.push(itemObj);
         });

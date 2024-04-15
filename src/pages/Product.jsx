@@ -1,7 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import AddToCartButton from "../components/AddToCartButton";
+import { CartContext } from "../components/CartProvider";
+
 export default function Product(props) {
+  const { cartItems } = useContext(CartContext);
   const { id } = props.match.params;
   const [productData, setProductData] = useState(null);
 
@@ -9,7 +13,7 @@ export default function Product(props) {
     fetch(`https://fakestoreapi.com/products/${id}`)
       .then((res) => res.json())
       .then((json) => setProductData(json));
-  }, [id]);
+  }, [id, cartItems]);
 
   return (
     <div className="product-container">
@@ -23,7 +27,7 @@ export default function Product(props) {
             reviews{" "}
           </p>
           <p>{productData.description}</p>
-          <button>Add to Cart</button>
+          {<AddToCartButton productId={cartItems[id - 1].product.id} />}
           <img src={productData.image} width={"20%"} alt="Product" />
         </div>
       ) : (

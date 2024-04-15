@@ -40,7 +40,7 @@ export default function Cart() {
 
   const handleCheckout = () => {
     alert(
-      `Your order has been processed. Please allow for 1-3 business days for your items to be shipped. Subtotal: ${getSubtotal()}, Shipping: ${getShippingPrice()}, Total: ${getTotal()}`
+      `Your order has been processed. Please allow for 1-3 business days for your items to be shipped. Subtotal: $${getSubtotal()}, Shipping: $${getShippingPrice()}, Total: $${getTotal()}`
     );
     setCartItems((prev) => {
       return prev.map((item) => {
