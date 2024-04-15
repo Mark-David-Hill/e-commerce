@@ -3,7 +3,6 @@ export default function Search(props) {
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
-    console.log(event.target.value);
   };
 
   const handleSelect = (event) => {

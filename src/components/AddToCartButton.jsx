@@ -10,6 +10,16 @@ export default function AddToCartButton(props) {
   const { productId } = props;
 
   const handleClick = () => {
+    console.log(cartItems);
+    const maxOrderId = cartItems
+      .map((item) => item.orderAddedId)
+      .reduce((prev, current) => {
+        return prev && prev > current ? prev : current;
+      });
+    console.log("max order id: ", maxOrderId);
+    // const orderAdded = maxOrderId + 1;
+    // console.log("order added: ", orderAdded);
+
     if (cartItems.length > 0) {
       setCartItems((prev) => {
         return prev.map((item) => {
@@ -17,6 +27,7 @@ export default function AddToCartButton(props) {
             return {
               ...item,
               count: 1,
+              orderAddedId: maxOrderId + 1,
             };
           }
           return item;

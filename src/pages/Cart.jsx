@@ -98,6 +98,7 @@ export default function Cart() {
       </button>
       {cartItems
         .filter((item) => item.count > 0)
+        .sort((a, b) => b.orderAddedId - a.orderAddedId)
         .map((item) => {
           return (
             <div key={item.product.id}>
