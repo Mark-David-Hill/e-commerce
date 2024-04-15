@@ -11,6 +11,8 @@ const customStyles = {
   },
 };
 
+ReactModal.setAppElement(".App");
+
 export default function ConfirmationModal(props) {
   const { modalIsOpen, setModalIsOpen, message, handleClickYes } = props;
 

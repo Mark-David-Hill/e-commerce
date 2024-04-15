@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import AddToCartButton from "../components/AddToCartButton";
 
 export default function ProductCard(props) {
-  const { product, searchTerm } = props;
+  const { product, searchTerm, isForCart = false } = props;
 
   const truncate = (str) => {
     return str.length > 50 ? str.substring(0, 47) + "..." : str;
@@ -27,7 +27,7 @@ export default function ProductCard(props) {
       <h3>{product.title}</h3>
       <p>{truncate(product.description)}</p>
       <NavLink to={`/products/${product.id}`}> View More Details</NavLink>
-      <AddToCartButton productId={product.id} />
+      {!isForCart && <AddToCartButton productId={product.id} />}
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { CartContext } from "../components/CartProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import ConfirmationModal from "../components/modals/ConfirmationModal";
+import ProductCard from "./ProductCard";
 
 export default function Cart() {
   const { cartItems, setCartItems } = useContext(CartContext);
@@ -144,9 +145,11 @@ export default function Cart() {
         .map((item) => {
           return (
             <div key={item.product.id}>
-              <p>
-                {item.product.title} x {item.count}
-              </p>
+              <ProductCard
+                key={item.product.id}
+                product={item.product}
+                isForCart={true}
+              />
               <button
                 onClick={() => adjustCount(item.product.id, false)}
                 disabled={item.count < 1}
@@ -160,6 +163,7 @@ export default function Cart() {
               <button onClick={() => adjustCount(item.product.id, true)}>
                 +
               </button>
+              <p>x {item.count}</p>
             </div>
           );
         })}
