@@ -1,5 +1,3 @@
-// Set up datetime here
-
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 
@@ -17,8 +15,6 @@ export default function AddToCartButton(props) {
         return prev && prev > current ? prev : current;
       });
     console.log("max order id: ", maxOrderId);
-    // const orderAdded = maxOrderId + 1;
-    // console.log("order added: ", orderAdded);
 
     if (cartItems.length > 0) {
       setCartItems((prev) => {

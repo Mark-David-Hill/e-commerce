@@ -1,0 +1,6 @@
+.products-container .product-card-wrapper {
+  display: flex;
+}
+.products-container .product-card-wrapper img {
+  height: 100px;
+}/*# sourceMappingURL=products.css.map */

@@ -1,10 +1,16 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../components/CartProvider";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import ConfirmationModal from "../components/modals/ConfirmationModal";
+
 export default function Cart() {
   const { cartItems, setCartItems } = useContext(CartContext);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const checkoutConfirmationMessage =
+    "Are you sure you want to checkout and purchase these items?";
 
   const adjustCount = (id, shouldIncrement) => {
     if (
@@ -36,6 +42,10 @@ export default function Cart() {
         return item;
       });
     });
+  };
+
+  const openConfirmationModal = () => {
+    setModalIsOpen(true);
   };
 
   const handleCheckout = () => {
@@ -83,6 +93,12 @@ export default function Cart() {
   return (
     <div className="cart-container">
       <h1>Here's the cart page</h1>
+      <ConfirmationModal
+        modalIsOpen={modalIsOpen}
+        setModalIsOpen={setModalIsOpen}
+        message={checkoutConfirmationMessage}
+        handleClickYes={handleCheckout}
+      />
       <p>
         {getCartItemsCount() === 0
           ? "No Items in Cart"
@@ -93,7 +109,10 @@ export default function Cart() {
       <p>Subtotal: ${getSubtotal().toFixed(2)}</p>
       <p>Shipping: ${getShippingPrice().toFixed(2)}</p>
       <p>Total: ${getTotal().toFixed(2)}</p>
-      <button onClick={handleCheckout} disabled={getCartItemsCount() < 1}>
+      <button
+        onClick={openConfirmationModal}
+        disabled={getCartItemsCount() < 1}
+      >
         Proceed to Checkout
       </button>
       {cartItems
