@@ -22,7 +22,7 @@ export default function About() {
         data that had been fetched, as it was being passed around and used in
         several places. The problem was solved by adding the array of fetched
         product data to context so it could be more easily used in conjunction
-        with the cart and other pages.
+        with the cart and on other pages.
       </p>
       <h2>Instructions</h2>
       <p>Explain the process of your capstone</p>

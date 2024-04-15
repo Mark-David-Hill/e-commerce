@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import CategoryFilter from "./CategoryFilter";
 import ProductCard from "./ProductCard";
-import Search from "./Search";
-import { CartContext } from "../components/CartProvider";
+import Search from "../Search";
+import { CartContext } from "../CartProvider";
 
 export default function Products(props) {
   const { cartItems } = useContext(CartContext);

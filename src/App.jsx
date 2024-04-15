@@ -4,13 +4,13 @@ import icons from "./helpers/icons";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Products from "./pages/Products";
-import Product from "./pages/Product";
-import Contact from "./pages/Contact";
-import NoPage from "./pages/NoPage";
-import About from "./pages/About";
-import Home from "./pages/Home";
-import Cart from "./pages/Cart";
+import Products from "./components/pages/Products";
+import Product from "./components/pages/Product";
+import Contact from "./components/pages/Contact";
+import NoPage from "./components/pages/NoPage";
+import About from "./components/pages/About";
+import Home from "./components/pages/Home";
+import Cart from "./components/pages/Cart";
 
 import "./styles/main.scss";
 

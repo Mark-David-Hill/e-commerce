@@ -1,4 +1,4 @@
-import Category from "../components/Category";
+import Category from "../Category";
 
 export default function Home() {
   return (

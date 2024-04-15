@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
-import { CartContext } from "../components/CartProvider";
+import { CartContext } from "../CartProvider";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import ConfirmationModal from "../components/modals/ConfirmationModal";
+import ConfirmationModal from "../modals/ConfirmationModal";
 import ProductCard from "./ProductCard";
 
 export default function Cart() {
