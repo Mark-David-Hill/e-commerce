@@ -7,24 +7,23 @@ import ConfirmationModal from "../components/modals/ConfirmationModal";
 
 export default function Cart() {
   const { cartItems, setCartItems } = useContext(CartContext);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [checkoutModalIsOpen, setCheckoutModalIsOpen] = useState(false);
+  const [removeModalIsOpen, setRemoveModalIsOpen] = useState(false);
+  const [idToRemove, setIdToRemove] = useState(null);
 
   const checkoutConfirmationMessage =
     "Are you sure you want to checkout and purchase these items?";
+  const removeConfirmationMessage =
+    "Are you sure you want to remove this from the cart? (yes/no)";
 
   const adjustCount = (id, shouldIncrement) => {
     if (
       !shouldIncrement &&
       cartItems.find((item) => item.product.id === id).count <= 1
     ) {
-      const choice = prompt(
-        "Are you sure you want to remove this from the cart? (yes/no)"
-      );
-      if (choice.toLowerCase() !== "y" && choice.toLowerCase() !== "yes") {
-        return;
-      } else {
-        alert("Item was removed from cart");
-      }
+      setIdToRemove(id);
+      openRemoveModal();
+      return;
     }
 
     setCartItems((prev) => {
@@ -45,7 +44,25 @@ export default function Cart() {
   };
 
   const openConfirmationModal = () => {
-    setModalIsOpen(true);
+    setCheckoutModalIsOpen(true);
+  };
+
+  const openRemoveModal = () => {
+    setRemoveModalIsOpen(true);
+  };
+
+  const handleRemove = () => {
+    setCartItems((prev) => {
+      return prev.map((item) => {
+        if (item.product.id === idToRemove) {
+          return {
+            ...item,
+            count: 0,
+          };
+        }
+        return item;
+      });
+    });
   };
 
   const handleCheckout = () => {
@@ -94,10 +111,16 @@ export default function Cart() {
     <div className="cart-container">
       <h1>Here's the cart page</h1>
       <ConfirmationModal
-        modalIsOpen={modalIsOpen}
-        setModalIsOpen={setModalIsOpen}
+        modalIsOpen={checkoutModalIsOpen}
+        setModalIsOpen={setCheckoutModalIsOpen}
         message={checkoutConfirmationMessage}
         handleClickYes={handleCheckout}
+      />
+      <ConfirmationModal
+        modalIsOpen={removeModalIsOpen}
+        setModalIsOpen={setRemoveModalIsOpen}
+        message={removeConfirmationMessage}
+        handleClickYes={handleRemove}
       />
       <p>
         {getCartItemsCount() === 0
