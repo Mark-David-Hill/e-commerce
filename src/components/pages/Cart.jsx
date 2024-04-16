@@ -4,6 +4,7 @@ import { CartContext } from "../CartProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import ConfirmationModal from "../modals/ConfirmationModal";
+import AlertModal from "../modals/AlertModal";
 import ProductCard from "./ProductCard";
 
 export default function Cart() {
@@ -11,6 +12,7 @@ export default function Cart() {
   const [checkoutModalIsOpen, setCheckoutModalIsOpen] = useState(false);
   const [removeModalIsOpen, setRemoveModalIsOpen] = useState(false);
   const [idToRemove, setIdToRemove] = useState(null);
+  const [alertModalIsOpen, setAlertModalIsOpen] = useState(false);
 
   const checkoutConfirmationMessage =
     "Are you sure you want to checkout and purchase these items?";
@@ -67,9 +69,7 @@ export default function Cart() {
   };
 
   const handleCheckout = () => {
-    alert(
-      `Your order has been processed. Please allow for 1-3 business days for your items to be shipped. Subtotal: $${getSubtotal()}, Shipping: $${getShippingPrice()}, Total: $${getTotal()}`
-    );
+    setAlertModalIsOpen(true);
     setCartItems((prev) => {
       return prev.map((item) => {
         return {
@@ -108,6 +108,9 @@ export default function Cart() {
     return getSubtotal() + getShippingPrice();
   };
 
+  const alertModalMessage =
+    "Your order has been processed. Please allow for 1-3 business days for your items to be shipped.";
+
   return (
     <div className="cart-container">
       <h1>Here's the cart page</h1>
@@ -122,6 +125,11 @@ export default function Cart() {
         setModalIsOpen={setRemoveModalIsOpen}
         message={removeConfirmationMessage}
         handleClickYes={handleRemove}
+      />
+      <AlertModal
+        modalIsOpen={alertModalIsOpen}
+        setModalIsOpen={setAlertModalIsOpen}
+        message={alertModalMessage}
       />
       <p>
         {getCartItemsCount() === 0

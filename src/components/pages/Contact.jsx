@@ -1,12 +1,25 @@
+import { useState } from "react";
+
+import AlertModal from "../modals/AlertModal";
+
 export default function Contact() {
+  const [alertModalIsOpen, setAlertModalIsOpen] = useState(false);
+
+  const modalMessage = "Your message was sent.";
+
   const handleSubmit = () => {
     const form = document.getElementsByClassName("contact-form")[0];
-    alert("The message was sent!");
+    setAlertModalIsOpen(true);
     form.reset();
   };
 
   return (
     <div className="contact-container">
+      <AlertModal
+        modalIsOpen={alertModalIsOpen}
+        setModalIsOpen={setAlertModalIsOpen}
+        message={modalMessage}
+      />
       <h1>Contact</h1>
       <form
         className="contact-form"

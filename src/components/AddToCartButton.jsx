@@ -8,13 +8,11 @@ export default function AddToCartButton(props) {
   const { productId } = props;
 
   const handleClick = () => {
-    console.log(cartItems);
     const maxOrderId = cartItems
       .map((item) => item.orderAddedId)
       .reduce((prev, current) => {
         return prev && prev > current ? prev : current;
       });
-    console.log("max order id: ", maxOrderId);
 
     if (cartItems.length > 0) {
       setCartItems((prev) => {
