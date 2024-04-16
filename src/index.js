@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import CartProvider from "./components/CartProvider";
+import CartProvider from "./components/context/CartProvider";
 import App from "./App";
 
 ReactDOM.render(
