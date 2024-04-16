@@ -22,15 +22,27 @@ export default function About() {
         data that had been fetched, as it was being passed around and used in
         several places. The problem was solved by adding the array of fetched
         product data to context so it could be more easily used in conjunction
-        with the cart and on other pages.
+        with the cart and on other pages. There were a variety of similar
+        instances where I was able to refactor my code to make it more
+        manageable and easy to work with.
       </p>
-      <h2>Instructions</h2>
-      <p>Explain the process of your capstone</p>
       <p>
-        Explain struggles you experienced throughout the frontend course and how
-        you solved them
+        As I have gone through DevPipeline's frontend course, one of the things
+        that was most challening was getting used to styling. Though there were
+        challenges along the way, especially on the bigger homework assignments,
+        with each new assignment/project I completed I was able to see where I
+        went wrong and find ways to improve my process and my code going
+        forward.
       </p>
-      <p>Explain your favorite lanugages and why</p>
+      <p>
+        Overall it was very satisfying learning React and building this app out,
+        since I know it would've taken so much longer to accomplish without the
+        help of React. Though I like a lot of things about the syntax of Python,
+        currently my favorite programming language is JavaScript when paired
+        with React. I enjoy being able to build things out with components and
+        see the end-user product come together on the frontend. My preferences
+        may change as I go through the backend course though!
+      </p>
     </div>
   );
 }
