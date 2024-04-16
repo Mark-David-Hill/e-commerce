@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-import AddToCartButton from "../AddToCartButton";
+import AddToCartButton from "./AddToCartButton";
 
 export default function ProductCard(props) {
   const { product, searchTerm, isForCart = false } = props;

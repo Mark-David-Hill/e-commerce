@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import CategoryFilter from "./CategoryFilter";
-import ProductCard from "./ProductCard";
+import ProductCard from "../ProductCard";
 import Search from "../Search";
 import { CartContext } from "../CartProvider";
 
