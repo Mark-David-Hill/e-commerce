@@ -1,0 +1,48 @@
+.home-container {
+  margin-top: 10vw;
+
+  .hero-section {
+    position: absolute;
+    z-index: -1;
+    top: -300px;
+    width: 100%;
+    height: 850px;
+    background-image: url("/assets/hero.jpg");
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+
+    h1 {
+      background-color: white;
+      position: relative;
+      top: 30px;
+      z-index: 30;
+    }
+  }
+
+  .categories-wrapper {
+    border-top: 2px solid darkslategray;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .category-container {
+      border: 1px solid orange;
+      display: flex;
+      padding: 20px;
+      margin: 10px;
+      width: 500px;
+      background-color: lightblue;
+      img {
+      }
+
+      .category-wrapper {
+        h2 {
+        }
+
+        a {
+        }
+      }
+    }
+  }
+}
