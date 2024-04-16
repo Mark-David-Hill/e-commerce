@@ -1,6 +1,10 @@
-.footer-container {
+.footer-wrapper {
   background-color: lightblue;
   width: 100vw;
   display: flex;
   justify-content: space-around;
+
+  p {
+    width: 300px;
+  }
 }

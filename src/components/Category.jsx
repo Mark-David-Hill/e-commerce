@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 import electronics from "../assets/electronics.jpg";
-import jewelry from "../assets/jewelry.jpg";
+import jewelery from "../assets/jewelery.jpg";
 import womens from "../assets/womens.jpg";
 import mens from "../assets/mens.jpg";
 
@@ -14,8 +14,8 @@ export default function Category(props) {
         src={
           categoryName === "electronics"
             ? electronics
-            : categoryName === "jewelry"
-            ? jewelry
+            : categoryName === "jewelery"
+            ? jewelery
             : categoryName === "men's clothing"
             ? mens
             : categoryName === "women's clothing"

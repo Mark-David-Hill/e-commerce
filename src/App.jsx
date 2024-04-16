@@ -2,8 +2,6 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import icons from "./helpers/icons";
 
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 import Products from "./components/pages/Products";
 import Product from "./components/pages/Product";
 import Contact from "./components/pages/Contact";
@@ -11,6 +9,8 @@ import NoPage from "./components/pages/NoPage";
 import About from "./components/pages/About";
 import Home from "./components/pages/Home";
 import Cart from "./components/pages/Cart";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 import "./styles/main.scss";
 
