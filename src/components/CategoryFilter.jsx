@@ -2,7 +2,7 @@ export default function CategoryFilter(props) {
   const { updateCategories } = props;
 
   return (
-    <div>
+    <div className="category-filter">
       <p>Categories:</p>
       <div
         className="checkbox-wrapper"

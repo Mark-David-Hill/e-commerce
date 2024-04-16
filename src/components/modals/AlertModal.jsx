@@ -16,11 +16,6 @@ ReactModal.setAppElement("#root");
 export default function AlertModal(props) {
   const { modalIsOpen, setModalIsOpen, message } = props;
 
-  // function afterOpenModal() {
-  // references are now sync'd and can be accessed.
-  // subtitle.style.color = "#f00";
-  // }
-
   function closeModal() {
     setModalIsOpen(false);
   }
@@ -29,7 +24,6 @@ export default function AlertModal(props) {
     <div>
       <ReactModal
         isOpen={modalIsOpen}
-        // onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"

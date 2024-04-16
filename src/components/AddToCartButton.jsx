@@ -31,7 +31,7 @@ export default function AddToCartButton(props) {
   };
 
   return (
-    <div>
+    <div className="add-to-cart-wrapper">
       {cartItems[productId - 1]?.count > 0 ? (
         <NavLink to="/cart">Go to Checkout</NavLink>
       ) : (
