@@ -13,9 +13,11 @@ export default function Navbar() {
       <NavLink to="/">
         <img src={logo} alt="Logo" />
       </NavLink>
-      <NavLink to="/products">Products</NavLink>
-      <NavLink to="/about">About</NavLink>
-      <NavLink to="/contact">Contact</NavLink>
+      <div className="main-links">
+        <NavLink to="/products">Products</NavLink>
+        <NavLink to="/about">About</NavLink>
+        <NavLink to="/contact">Contact</NavLink>
+      </div>
       <div className="cart-button-wrapper">
         <NavLink to="/cart">
           <FontAwesomeIcon icon="fa-cart-shopping" />

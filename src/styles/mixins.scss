@@ -1,0 +1,11 @@
+@mixin link-standard() {
+  text-decoration: none;
+  border: 2px solid orange;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: rgb(232, 236, 238);
+
+  &:hover {
+    background-color: rgb(242, 243, 244);
+  }
+}

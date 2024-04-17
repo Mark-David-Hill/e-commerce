@@ -1,10 +1,11 @@
 .footer-wrapper {
   background-color: lightblue;
   width: 100vw;
+  height: 15vw;
+  max-height: 80px;
   display: flex;
   justify-content: space-around;
-
-  p {
-    width: 300px;
-  }
+  align-items: center;
+  border-top: 2px solid darkslategray;
+  text-wrap: wrap;
 }
