@@ -10,6 +10,11 @@
   position: fixed;
   z-index: 5;
 
+  .cart-button {
+    display: flex;
+    align-items: center;
+  }
+
   .main-links {
     display: flex;
     gap: 5vw;
@@ -29,6 +34,11 @@
   img {
     width: 50px;
     border-radius: 10px;
+  }
+
+  svg,
+  p {
+    font-size: 20px;
   }
 
   .cart-button-wrapper {

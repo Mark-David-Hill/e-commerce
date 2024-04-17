@@ -19,16 +19,18 @@ export default function Navbar() {
         <NavLink to="/contact">Contact</NavLink>
       </div>
       <div className="cart-button-wrapper">
-        <NavLink to="/cart">
-          <FontAwesomeIcon icon="fa-cart-shopping" />
+        <NavLink to="/cart" style={{ textDecoration: "none" }}>
+          <div className="cart-button">
+            <FontAwesomeIcon icon="fa-cart-shopping" />
+            <p>
+              {
+                cartItems.filter((item) => {
+                  return item.count > 0;
+                }).length
+              }
+            </p>
+          </div>
         </NavLink>
-        <p>
-          {
-            cartItems.filter((item) => {
-              return item.count > 0;
-            }).length
-          }
-        </p>
       </div>
     </div>
   );
