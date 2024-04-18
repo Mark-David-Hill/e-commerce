@@ -23,6 +23,9 @@ export default function CartProvider({ children }) {
           items.push(itemObj);
         });
         setCartItems(items);
+      })
+      .catch((err) => {
+        console.error("Get Products Error: ", err);
       });
   }, []);
 

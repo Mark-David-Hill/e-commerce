@@ -12,7 +12,10 @@ export default function Product(props) {
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${id}`)
       .then((res) => res.json())
-      .then((json) => setProductData(json));
+      .then((json) => setProductData(json))
+      .catch((err) => {
+        console.error("Get Product Error: ", err);
+      });
   }, [id, cartItems]);
 
   return (

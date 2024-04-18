@@ -1,6 +1,6 @@
 @mixin link-standard() {
   text-decoration: none;
-  border: 2px solid orange;
+  border: 1px solid $dark;
   border-radius: 5px;
   padding: 10px;
   background-color: rgb(232, 236, 238);

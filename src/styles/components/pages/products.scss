@@ -1,9 +1,32 @@
 .products-container {
-  .product-card-wrapper {
-    display: flex;
+  padding-top: 100px;
 
-    img {
-      height: 100px;
+  .products-list-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  .search-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+    margin: 20px;
+
+    .search-wrapper {
+      display: flex;
+      gap: 20px;
+    }
+
+    .category-filter {
+      display: flex;
+      align-items: center;
     }
   }
 }

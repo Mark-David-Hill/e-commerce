@@ -11,19 +11,21 @@ export default function Search(props) {
 
   return (
     <div className="search-wrapper">
-      <select name="filter-by" id="filter-by" onChange={handleSelect}>
-        <option value="id">Sort By ID:</option>
-        <option value="price">By Price</option>
-        <option value="alphabet">Alphabetical</option>
-      </select>
+      <div className="filter-wrapper">
+        <button onClick={() => setOrderBy(orderBy === "desc" ? "asc" : "desc")}>
+          {orderBy === "desc" ? "⌄" : "^"}
+        </button>
+        <select name="filter-by" id="filter-by" onChange={handleSelect}>
+          <option value="id">Sort By ID:</option>
+          <option value="price">By Price</option>
+          <option value="alphabet">Alphabetical</option>
+        </select>
+      </div>
       <input
         type="text"
         placeholder="Search Products"
         onChange={handleSearch}
       />
-      <button onClick={() => setOrderBy(orderBy === "desc" ? "asc" : "desc")}>
-        {orderBy === "desc" ? "⌄" : "^"}
-      </button>
     </div>
   );
 }

@@ -62,13 +62,15 @@ export default function Products(props) {
   return (
     <div className="products-container">
       <h1>Products</h1>
-      <Search
-        setSearchTerm={setSearchTerm}
-        setOrderCategory={setOrderCategory}
-        setOrderBy={setOrderBy}
-        orderBy={orderBy}
-      />
-      <CategoryFilter updateCategories={updateCategories} />
+      <div className="search-section">
+        <Search
+          setSearchTerm={setSearchTerm}
+          setOrderCategory={setOrderCategory}
+          setOrderBy={setOrderBy}
+          orderBy={orderBy}
+        />
+        <CategoryFilter updateCategories={updateCategories} />
+      </div>
       <ProductsList
         categories={categories}
         orderCategory={orderCategory}

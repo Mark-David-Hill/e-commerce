@@ -22,12 +22,18 @@ export default function ProductCard(props) {
             : "none",
       }}
     >
-      <img src={product.image} alt="" />
-      <p>${product.price}</p>
-      <h3>{product.title}</h3>
-      <p>{truncate(product.description)}</p>
-      <NavLink to={`/products/${product.id}`}> View More Details</NavLink>
-      {!isForCart && <AddToCartButton productId={product.id} />}
+      <NavLink to={`/products/${product.id}`}>
+        <img src={product.image} alt="" />{" "}
+      </NavLink>
+      <div className="product-card-content">
+        <h3>{product.title}</h3>
+        <p>${product.price}</p>
+        <p>{truncate(product.description)}</p>
+        <div className="product-card-buttons">
+          <NavLink to={`/products/${product.id}`}> View More Details</NavLink>
+          {!isForCart && <AddToCartButton productId={product.id} />}
+        </div>
+      </div>
     </div>
   );
 }
