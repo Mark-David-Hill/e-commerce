@@ -8,6 +8,7 @@
 
   .cart-totals-wrapper {
     margin-left: 50px;
+    font-size: 18px;
 
     .totals-addition-wrapper {
       display: flex;
@@ -35,8 +36,15 @@
       }
 
       .cart-item-buttons-wrapper {
+        font-size: 20px;
         display: flex;
         align-items: center;
+        gap: 10px;
+
+        svg,
+        button {
+          font-size: 18px;
+        }
       }
     }
   }

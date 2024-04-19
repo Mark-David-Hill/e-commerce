@@ -1,8 +1,6 @@
 import { useContext, useState } from "react";
 import { CartContext } from "./context/CartProvider";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import ConfirmationModal from "./modals/ConfirmationModal";
 import ProductCard from "./ProductCard";
 
@@ -13,33 +11,6 @@ export default function CartItems() {
 
   const removeConfirmationMessage =
     "Are you sure you want to remove this from the cart? (yes/no)";
-
-  const adjustCount = (id, shouldIncrement) => {
-    if (
-      !shouldIncrement &&
-      cartItems.find((item) => item.product.id === id).count <= 1
-    ) {
-      setIdToRemove(id);
-      openRemoveModal();
-      return;
-    }
-
-    setCartItems((prev) => {
-      return prev.map((item) => {
-        if (item.product.id === id) {
-          return {
-            ...item,
-            count: shouldIncrement
-              ? item.count + 1
-              : item.count > 0
-              ? item.count - 1
-              : item.count,
-          };
-        }
-        return item;
-      });
-    });
-  };
 
   const openRemoveModal = () => {
     setRemoveModalIsOpen(true);
@@ -78,23 +49,10 @@ export default function CartItems() {
                   key={item.product.id}
                   product={item.product}
                   isForCart={true}
+                  setIdToRemove={setIdToRemove}
+                  openRemoveModal={openRemoveModal}
+                  item={item}
                 />
-                <div className="cart-item-buttons-wrapper">
-                  <button
-                    onClick={() => adjustCount(item.product.id, false)}
-                    disabled={item.count < 1}
-                  >
-                    {item.count === 1 ? (
-                      <FontAwesomeIcon icon="fa-trash" color="black" />
-                    ) : (
-                      "-"
-                    )}
-                  </button>
-                  <button onClick={() => adjustCount(item.product.id, true)}>
-                    +
-                  </button>
-                  <p>x {item.count}</p>
-                </div>
               </div>
             );
           })}
