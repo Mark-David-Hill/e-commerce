@@ -8,6 +8,7 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
+    padding: "50px",
   },
 };
 
@@ -33,10 +34,16 @@ export default function ConfirmationModal(props) {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <button onClick={closeModal}>x</button>
-        <h3>{message}</h3>
-        <button onClick={closeModal}>No</button>
-        <button onClick={handleClick}>Yes</button>
+        <div className="modal-content-wrapper">
+          <div className="modal-close-wrapper">
+            <button onClick={closeModal}>x</button>
+          </div>
+          <h3>{message}</h3>
+          <div className="modal-buttons-wrapper">
+            <button onClick={closeModal}>No</button>
+            <button onClick={handleClick}>Yes</button>
+          </div>
+        </div>
       </ReactModal>
     </div>
   );

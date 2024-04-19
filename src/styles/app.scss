@@ -8,3 +8,27 @@ body {
   min-height: 100vh;
   justify-content: space-between;
 }
+
+.modal-content-wrapper {
+  max-width: 500px;
+  text-align: center;
+
+  .modal-close-wrapper {
+    text-align: right;
+  }
+
+  .close-button {
+    text-align: center;
+  }
+
+  .modal-buttons-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+
+    button {
+      width: 50px;
+      padding: 5px;
+    }
+  }
+}
