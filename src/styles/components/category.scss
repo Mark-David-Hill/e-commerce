@@ -1,6 +1,31 @@
 .category-container {
   display: flex;
+  border: 2px solid $dark;
+  border-radius: 2px;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  width: 80vw;
+  max-width: 500px;
+  background-color: $primary;
+
   img {
     width: 50%;
+  }
+
+  .category-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    h2 {
+      height: 50px;
+      text-transform: capitalize;
+    }
+
+    a {
+      @include link-standard;
+    }
   }
 }

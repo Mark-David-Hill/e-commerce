@@ -6,7 +6,7 @@ export default function ProductCard(props) {
   const { product, searchTerm, isForCart = false } = props;
 
   const truncate = (str) => {
-    return str.length > 50 ? str.substring(0, 47) + "..." : str;
+    return str.length > 119 ? str.substring(0, 116) + "..." : str;
   };
 
   return (
@@ -27,7 +27,7 @@ export default function ProductCard(props) {
       </NavLink>
       <div className="product-card-content">
         <h3>{product.title}</h3>
-        <p>${product.price}</p>
+        <h2>${product.price}</h2>
         <p>{truncate(product.description)}</p>
         <div className="product-card-buttons">
           <NavLink to={`/products/${product.id}`}> View More Details</NavLink>
