@@ -15,18 +15,34 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
     gap: 30px;
     padding: 20px;
     margin: 20px;
 
     .search-wrapper {
       display: flex;
+      flex-wrap: wrap;
       gap: 10px;
+
+      .filter-wrapper {
+        display: flex;
+      }
+
+      select,
+      input {
+        font-size: 15px;
+      }
     }
 
     .category-filter {
+      font-size: 18px;
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
     }
   }
+}
+
+@media screen and (max-width: 1006px) {
 }
