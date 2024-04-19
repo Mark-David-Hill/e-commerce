@@ -41,7 +41,7 @@ export default function About() {
         currently my favorite programming language is JavaScript when paired
         with React. I enjoy being able to build things out with components and
         see the end-user product come together on the frontend. My preferences
-        may change as I go through the backend course though!
+        may change as I go through the backend course though.
       </p>
     </div>
   );
