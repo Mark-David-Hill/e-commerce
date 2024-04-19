@@ -41,9 +41,13 @@ export default function CartCheckout() {
           ? "1 Item in Cart"
           : `${getCartItemsCount()} Items in Cart`}
       </p>
-      <p>Subtotal: ${getSubtotal().toFixed(2)}</p>
-      <p>Shipping: ${getShippingPrice().toFixed(2)}</p>
-      <p>Total: ${getTotal().toFixed(2)}</p>
+      <div className="totals-addition-wrapper">
+        <p>Subtotal: ${getSubtotal().toFixed(2)}</p>
+        <p>+</p>
+        <p>Shipping: ${getShippingPrice().toFixed(2)}</p>
+        <p>=</p>
+        <p>Total: ${getTotal().toFixed(2)}</p>
+      </div>
     </div>
   );
 }

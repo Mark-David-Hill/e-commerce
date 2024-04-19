@@ -60,41 +60,45 @@ export default function CartItems() {
   };
 
   return (
-    <div className="cart-items-wrapper">
+    <div className="cart-items-container">
       <ConfirmationModal
         modalIsOpen={removeModalIsOpen}
         setModalIsOpen={setRemoveModalIsOpen}
         message={removeConfirmationMessage}
         handleClickYes={handleRemove}
       />
-      {cartItems
-        .filter((item) => item.count > 0)
-        .sort((a, b) => b.orderAddedId - a.orderAddedId)
-        .map((item) => {
-          return (
-            <div key={item.product.id}>
-              <ProductCard
-                key={item.product.id}
-                product={item.product}
-                isForCart={true}
-              />
-              <button
-                onClick={() => adjustCount(item.product.id, false)}
-                disabled={item.count < 1}
-              >
-                {item.count === 1 ? (
-                  <FontAwesomeIcon icon="fa-trash" color="black" />
-                ) : (
-                  "-"
-                )}
-              </button>
-              <button onClick={() => adjustCount(item.product.id, true)}>
-                +
-              </button>
-              <p>x {item.count}</p>
-            </div>
-          );
-        })}
+      <div className="cart-items-wrapper">
+        {cartItems
+          .filter((item) => item.count > 0)
+          .sort((a, b) => b.orderAddedId - a.orderAddedId)
+          .map((item) => {
+            return (
+              <div className="cart-item-wrapper" key={item.product.id}>
+                <ProductCard
+                  key={item.product.id}
+                  product={item.product}
+                  isForCart={true}
+                />
+                <div className="cart-item-buttons-wrapper">
+                  <button
+                    onClick={() => adjustCount(item.product.id, false)}
+                    disabled={item.count < 1}
+                  >
+                    {item.count === 1 ? (
+                      <FontAwesomeIcon icon="fa-trash" color="black" />
+                    ) : (
+                      "-"
+                    )}
+                  </button>
+                  <button onClick={() => adjustCount(item.product.id, true)}>
+                    +
+                  </button>
+                  <p>x {item.count}</p>
+                </div>
+              </div>
+            );
+          })}
+      </div>
     </div>
   );
 }

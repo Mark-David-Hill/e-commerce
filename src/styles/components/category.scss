@@ -14,10 +14,8 @@
   }
 
   .category-wrapper {
-    display: flex;
-    flex-direction: column;
+    @include flex-col-center;
     justify-content: flex-start;
-    align-items: center;
 
     h2 {
       height: 50px;
