@@ -21,17 +21,20 @@ export default function Product(props) {
   return (
     <div className="product-container">
       {productData ? (
-        <div>
-          <h1>{productData.title}</h1>
-          <p>Category: {productData.category}</p>
-          <p>Price: ${productData.price}</p>
-          <p>
-            Rating: {productData.rating.rate} out of {productData.rating.count}{" "}
-            reviews{" "}
-          </p>
-          <p>{productData.description}</p>
-          {<AddToCartButton productId={cartItems[id - 1].product.id} />}
+        <div className="product-wrapper">
           <img src={productData.image} width={"20%"} alt="Product" />
+          <div className="product-text-wrapper">
+            <h1>{productData.title}</h1>
+            <p>Category: {productData.category}</p>
+            <p>Price: ${productData.price}</p>
+            <p>
+              Rating: {productData.rating.rate} stars out of{" "}
+              {productData.rating.count} reviews{" "}
+            </p>
+            <h2>About this item:</h2>
+            <p>{productData.description}</p>
+            {<AddToCartButton productId={cartItems[id - 1].product.id} />}
+          </div>
         </div>
       ) : (
         <FontAwesomeIcon icon="fa-circle-notch" spin size="xl" />
