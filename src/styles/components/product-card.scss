@@ -6,12 +6,13 @@
   justify-content: space-around;
   padding: 20px;
   width: 40vw;
-  margin: 50px;
-  min-width: 500px;
+  margin-bottom: 50px;
+  min-width: 300px;
 
   img {
     border-radius: 3px;
-    width: 300px;
+    min-width: 200px;
+    max-width: 300px;
   }
 
   .product-card-content {
@@ -34,5 +35,11 @@
         }
       }
     }
+  }
+}
+
+@media screen and (max-width: 1180px) {
+  .product-card-wrapper {
+    flex-wrap: wrap;
   }
 }
