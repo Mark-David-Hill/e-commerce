@@ -10,7 +10,7 @@ export default function CartItems() {
   const [idToRemove, setIdToRemove] = useState(null);
 
   const removeConfirmationMessage =
-    "Are you sure you want to remove this from the cart? (yes/no)";
+    "Are you sure you want to remove this from the cart?";
 
   const openRemoveModal = () => {
     setRemoveModalIsOpen(true);
