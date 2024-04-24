@@ -1,5 +1,6 @@
 .category-container {
   display: flex;
+  align-items: center;
   border: 2px solid $dark;
   border-radius: 2px;
   display: flex;
@@ -21,10 +22,21 @@
       height: 50px;
       text-transform: capitalize;
       text-align: center;
+      text-wrap: wrap;
     }
 
     a {
       @include link-standard;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .category-container {
+    flex-direction: column;
+
+    img {
+      width: 90%;
     }
   }
 }
