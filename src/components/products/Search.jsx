@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function Search(props) {
   const { setSearchTerm, setOrderCategory, setOrderBy, orderBy } = props;
 
-  const handleSearch = (event) => {
-    setSearchTerm(event.target.value);
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
   };
 
-  const handleSelect = (event) => {
-    setOrderCategory(event.target.value.toLowerCase());
+  const handleSelect = (e) => {
+    setOrderCategory(e.target.value.toLowerCase());
   };
 
   return (
