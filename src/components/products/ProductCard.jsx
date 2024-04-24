@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { CartContext } from "./context/CartProvider";
+import { CartContext } from "../context/CartProvider";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import AddToCartButton from "./AddToCartButton";
+import AddToCartButton from "../cart/AddToCartButton";
 
 export default function ProductCard(props) {
   const { cartItems, setCartItems } = useContext(CartContext);

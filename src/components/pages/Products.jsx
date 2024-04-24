@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
 
-import ProductsList from "../ProductsList";
-import CategoryFilter from "../CategoryFilter";
-import Search from "../Search";
+import ProductsList from "../products/ProductsList";
+import CategoryFilter from "../category/CategoryFilter";
+import Search from "../products/Search";
 
 export default function Products(props) {
   const [orderBy, setOrderBy] = useState("desc");
   const [orderCategory, setOrderCategory] = useState("id");
   const [searchTerm, setSearchTerm] = useState("");
-  const [categories, setCategories] = useState([
-    "women's clothing",
-    "men's clothing",
-    "jewelery",
-    "electronics",
-  ]);
+  const [categories, setCategories] = useState([]);
+  //   "women's clothing",
+  //   "men's clothing",
+  //   "jewelry",
+  //   "electronics",
+  // ]]);
 
   const updateCategories = (checkboxWrapper) => {
     const checkedCategories = [];
@@ -25,6 +25,17 @@ export default function Products(props) {
     }
     setCategories(checkedCategories);
   };
+
+  useEffect(() => {
+    if (categories && !props?.location?.state?.categories) {
+      fetch("https://fakestoreapi.com/products/categories")
+        .then((res) => res.json())
+        .then((json) => {
+          console.log(json);
+          setCategories(json);
+        });
+    }
+  }, []);
 
   useEffect(() => {
     const checkboxWrapper =

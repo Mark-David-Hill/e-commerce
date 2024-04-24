@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 
-import { CartContext } from "./context/CartProvider";
+import { CartContext } from "../context/CartProvider";
 
 export default function AddToCartButton(props) {
   const { setCartItems, cartItems } = useContext(CartContext);

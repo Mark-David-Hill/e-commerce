@@ -9,8 +9,8 @@ import NoPage from "./components/pages/NoPage";
 import About from "./components/pages/About";
 import Home from "./components/pages/Home";
 import Cart from "./components/pages/Cart";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Navbar from "./components/nav/Navbar";
+import Footer from "./components/nav/Footer";
 
 import "./styles/main.scss";
 

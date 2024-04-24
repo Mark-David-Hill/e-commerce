@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
-import { CartContext } from "./context/CartProvider";
+import { CartContext } from "../context/CartProvider";
 
-import ConfirmationModal from "./modals/ConfirmationModal";
-import AlertModal from "./modals/AlertModal";
+import ConfirmationModal from "../modals/ConfirmationModal";
+import AlertModal from "../modals/AlertModal";
 
 export default function CartCheckout() {
   const { cartItems, setCartItems } = useContext(CartContext);

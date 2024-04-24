@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import AddToCartButton from "../AddToCartButton";
+import AddToCartButton from "../cart/AddToCartButton";
 import { CartContext } from "../context/CartProvider";
 
 export default function Product(props) {

@@ -27,7 +27,7 @@ export default function CategoryFilter(props) {
           name="category2"
           value="jewelery"
         />
-        <label htmlFor="category2"> Jewelery</label>
+        <label htmlFor="category2"> Jewelry</label>
         <input
           defaultChecked="true"
           type="checkbox"

@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { CartContext } from "./context/CartProvider";
+import { CartContext } from "../context/CartProvider";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import logo from "../assets/logo.png";
+import logo from "../../assets/logo.png";
 
 export default function Navbar() {
   const { cartItems } = useContext(CartContext);
