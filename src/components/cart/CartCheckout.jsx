@@ -4,8 +4,9 @@ import { CartContext } from "../context/CartProvider";
 import ConfirmationModal from "../modals/ConfirmationModal";
 import AlertModal from "../modals/AlertModal";
 
-export default function CartCheckout() {
-  const { cartItems, setCartItems } = useContext(CartContext);
+export default function CartCheckout(props) {
+  const { setCartItems } = useContext(CartContext);
+  const { getCartItemsCount } = props;
   const [checkoutModalIsOpen, setCheckoutModalIsOpen] = useState(false);
   const [alertModalIsOpen, setAlertModalIsOpen] = useState(false);
 
@@ -28,14 +29,6 @@ export default function CartCheckout() {
         };
       });
     });
-  };
-
-  const getCartItemsCount = () => {
-    let totalItemCount = 0;
-    cartItems.forEach((item) => {
-      totalItemCount += item.count;
-    });
-    return totalItemCount;
   };
 
   return (

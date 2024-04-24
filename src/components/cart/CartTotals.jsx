@@ -1,16 +1,9 @@
 import { useContext } from "react";
 import { CartContext } from "../context/CartProvider";
 
-export default function CartCheckout() {
+export default function CartTotals(props) {
   const { cartItems } = useContext(CartContext);
-
-  const getCartItemsCount = () => {
-    let totalItemCount = 0;
-    cartItems.forEach((item) => {
-      totalItemCount += item.count;
-    });
-    return totalItemCount;
-  };
+  const { getCartItemsCount } = props;
 
   const getSubtotal = () => {
     let subtotal = 0;
