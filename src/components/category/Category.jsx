@@ -30,7 +30,7 @@ export default function Category(props) {
           to={{
             pathname: "/products",
             state: {
-              categories: [categoryName],
+              currentCategories: [categoryName],
             },
           }}
         >

@@ -7,7 +7,7 @@ import ProductCard from "./ProductCard";
 
 export default function ProductsList(props) {
   const { cartItems } = useContext(CartContext);
-  const { categories, orderCategory, orderBy, searchTerm } = props;
+  const { currentCategories, orderCategory, orderBy, searchTerm } = props;
   const [numResults, setNumResults] = useState(0);
 
   const idDesc = (a, b) => a.id - b.id;
@@ -18,12 +18,14 @@ export default function ProductsList(props) {
   const priceAsc = (a, b) => b.price - a.price;
 
   const categoryFilterCriteria = (product) =>
-    (categories.includes("women's clothing") &&
+    (currentCategories.includes("women's clothing") &&
       product.category === "women's clothing") ||
-    (categories.includes("men's clothing") &&
+    (currentCategories.includes("men's clothing") &&
       product.category === "men's clothing") ||
-    (categories.includes("jewelery") && product.category === "jewelery") ||
-    (categories.includes("electronics") && product.category === "electronics");
+    (currentCategories.includes("jewelery") &&
+      product.category === "jewelery") ||
+    (currentCategories.includes("electronics") &&
+      product.category === "electronics");
 
   const sortCriteria =
     orderCategory === "id"
@@ -56,7 +58,7 @@ export default function ProductsList(props) {
 
   return (
     <div className="products-list-wrapper">
-      {categories.length === 0 ? (
+      {currentCategories.length === 0 ? (
         <h3>No results. Please select a category</h3>
       ) : searchTerm.trim() !== "" && numResults === 0 ? (
         <h3>No products match your search. Please try again.</h3>

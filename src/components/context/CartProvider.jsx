@@ -3,10 +3,13 @@ export const CartContext = createContext();
 
 export default function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   const cartState = {
     cartItems,
     setCartItems,
+    categories,
+    setCategories,
   };
 
   useEffect(() => {
@@ -27,6 +30,23 @@ export default function CartProvider({ children }) {
       .catch((err) => {
         console.error("Get Products Error: ", err);
       });
+  }, []);
+
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products/categories")
+      .then((res) => res.json())
+      .then((json) => {
+        const newCategories = [];
+        for (let i = 0; i < json.length; i++) {
+          const categoryObject = {
+            id: i + 1,
+            name: json[i],
+          };
+          newCategories.push(categoryObject);
+        }
+        setCategories(newCategories);
+      })
+      .catch((err) => console.error("Get Categories Error: ", err));
   }, []);
 
   return (

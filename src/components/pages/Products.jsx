@@ -1,27 +1,26 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
-import ProductsList from "../products/ProductsList";
+import { CartContext } from "../context/CartProvider";
 import CategoryFilter from "../category/CategoryFilter";
+import ProductsList from "../products/ProductsList";
 import Search from "../products/Search";
 
 export default function Products(props) {
+  const { categories } = useContext(CartContext);
   const [orderBy, setOrderBy] = useState("desc");
   const [orderCategory, setOrderCategory] = useState("id");
   const [searchTerm, setSearchTerm] = useState("");
-  const [categories, setCategories] = useState([]);
+  const [currentCategories, setCurrentCategories] = useState([]);
 
   useEffect(() => {
-    if (!props?.location?.state?.categories) {
-      fetch("https://fakestoreapi.com/products/categories")
-        .then((res) => res.json())
-        .then((json) => {
-          setCategories(json);
-        });
+    if (props?.location?.state?.currentCategories) {
+      const chosenCategory = props.location.state.currentCategories[0];
+      setCurrentCategories([chosenCategory]);
     } else {
-      const chosenCategory = props.location.state.categories[0];
-      setCategories([chosenCategory]);
+      const newCategories = categories.map((category) => category.name);
+      setCurrentCategories(newCategories);
     }
-  }, [props?.location?.state?.categories]);
+  }, [categories, props?.location?.state?.currentCategories]);
 
   return (
     <div className="products-container">
@@ -33,10 +32,13 @@ export default function Products(props) {
           setOrderBy={setOrderBy}
           orderBy={orderBy}
         />
-        <CategoryFilter categories={categories} setCategories={setCategories} />
+        <CategoryFilter
+          currentCategories={currentCategories}
+          setCurrentCategories={setCurrentCategories}
+        />
       </div>
       <ProductsList
-        categories={categories}
+        currentCategories={currentCategories}
         orderCategory={orderCategory}
         orderBy={orderBy}
         searchTerm={searchTerm}

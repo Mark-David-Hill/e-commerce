@@ -1,13 +1,16 @@
 export default function CategoryFilter(props) {
-  const { categories, setCategories } = props;
+  const { currentCategories, setCurrentCategories } = props;
 
   const updateCategories = (selectedCategory) => {
-    if (categories.includes(selectedCategory)) {
-      setCategories((prevCategories) =>
+    if (currentCategories.includes(selectedCategory)) {
+      setCurrentCategories((prevCategories) =>
         prevCategories.filter((category) => category !== selectedCategory)
       );
     } else {
-      setCategories((prevCategories) => [...prevCategories, selectedCategory]);
+      setCurrentCategories((prevCategories) => [
+        ...prevCategories,
+        selectedCategory,
+      ]);
     }
   };
 
@@ -20,7 +23,7 @@ export default function CategoryFilter(props) {
           id="category1"
           name="category1"
           value="men's clothing"
-          checked={categories.includes("men's clothing")}
+          checked={currentCategories.includes("men's clothing")}
           onChange={() => updateCategories("men's clothing")}
         />
         <label htmlFor="category1"> Men's Clothing</label>
@@ -29,7 +32,7 @@ export default function CategoryFilter(props) {
           id="category2"
           name="category2"
           value="jewelery"
-          checked={categories.includes("jewelery")}
+          checked={currentCategories.includes("jewelery")}
           onChange={() => updateCategories("jewelery")}
         />
         <label htmlFor="category2"> Jewelry</label>
@@ -38,7 +41,7 @@ export default function CategoryFilter(props) {
           id="category3"
           name="category3"
           value="electronics"
-          checked={categories.includes("electronics")}
+          checked={currentCategories.includes("electronics")}
           onChange={() => updateCategories("electronics")}
         />
         <label htmlFor="category3"> Electronics</label>
@@ -47,7 +50,7 @@ export default function CategoryFilter(props) {
           id="category4"
           name="category4"
           value="women's clothing"
-          checked={categories.includes("women's clothing")}
+          checked={currentCategories.includes("women's clothing")}
           onChange={() => updateCategories("women's clothing")}
         />
         <label htmlFor="category4"> Women's Clothing</label>
