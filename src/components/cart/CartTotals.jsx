@@ -5,21 +5,14 @@ export default function CartTotals(props) {
   const { cartItems } = useContext(CartContext);
   const { getCartItemsCount } = props;
 
-  const getSubtotal = () => {
-    let subtotal = 0;
-    cartItems.forEach((item) => {
-      subtotal += item.product.price * item.count;
-    });
-    return subtotal;
-  };
+  const getSubtotal = () =>
+    cartItems.reduce(
+      (prev, current) => prev + current.product.price * current.count,
+      0
+    );
 
-  const getShippingPrice = () => {
-    let shippingPrice = 0;
-    cartItems.forEach((item) => {
-      shippingPrice += 1.5 * item.count;
-    });
-    return shippingPrice;
-  };
+  const getShippingPrice = () =>
+    cartItems.reduce((prev, current) => prev + 1.5 * current.count, 0);
 
   const getTotal = () => {
     return getSubtotal() + getShippingPrice();
