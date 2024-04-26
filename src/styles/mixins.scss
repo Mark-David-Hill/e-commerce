@@ -3,11 +3,43 @@
   border: 1px solid $dark;
   border-radius: 5px;
   padding: 10px;
-  background-color: rgb(232, 236, 238);
+  background-color: $dark-mode-light;
 
   &:hover {
     background-color: rgb(242, 243, 244);
   }
+}
+
+@mixin dark-link-standard() {
+  border: 1px solid $dark;
+  color: black;
+  background-color: #72a7ec;
+
+  &:hover {
+    background-color: #89b3ef;
+  }
+}
+
+@mixin link-secondary() {
+  color: rgb(65, 65, 255);
+
+  &:hover {
+    color: rgb(186, 0, 0);
+  }
+}
+
+@mixin dark-link-secondary() {
+  color: rgb(178, 178, 255);
+
+  &:hover {
+    color: rgb(239, 115, 115);
+  }
+}
+
+@mixin dark-card() {
+  color: $dark-mode-light;
+  background-color: #494b50;
+  border-color: black;
 }
 
 @mixin flex-col-center() {

@@ -1,12 +1,17 @@
 body {
   margin: 0px;
-  color: $dark;
 }
 
 .App {
   @include flex-col-center;
   min-height: 100vh;
   justify-content: space-between;
+  color: $dark;
+}
+
+.App.dark-mode {
+  color: $dark-mode-light;
+  background-color: rgb(39, 39, 39);
 }
 
 .modal-content-wrapper {

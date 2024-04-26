@@ -10,3 +10,10 @@
   border-top: 2px solid darkslategray;
   text-wrap: wrap;
 }
+
+.App.dark-mode {
+  .footer-wrapper {
+    background-color: $dark-nav;
+    color: $dark-mode-light;
+  }
+}

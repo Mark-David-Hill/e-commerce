@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import icons from "./helpers/icons";
@@ -17,10 +18,12 @@ import "./styles/main.scss";
 icons();
 
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
   return (
-    <div className="App">
+    <div className={"App " + (isDarkMode && "dark-mode")}>
       <BrowserRouter>
-        <Navbar />
+        <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/products" component={Products} />

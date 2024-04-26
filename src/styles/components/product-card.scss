@@ -28,18 +28,39 @@
       gap: 20px;
 
       a {
-        color: rgb(65, 65, 255);
-
-        &:hover {
-          color: rgb(186, 0, 0);
-        }
+        @include link-secondary;
       }
     }
+  }
+}
+
+.add-to-cart-wrapper {
+  a {
+    @include link-secondary;
   }
 }
 
 @media screen and (max-width: 1180px) {
   .product-card-wrapper {
     flex-wrap: wrap;
+  }
+}
+
+.App.dark-mode {
+  .product-card-wrapper {
+    @include dark-card;
+
+    .product-card-content {
+      .product-card-buttons {
+        a {
+          @include dark-link-secondary;
+        }
+      }
+    }
+  }
+  .add-to-cart-wrapper {
+    a {
+      @include dark-link-secondary;
+    }
   }
 }

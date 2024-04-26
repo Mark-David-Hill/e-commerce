@@ -40,3 +40,14 @@
     }
   }
 }
+
+.App.dark-mode {
+  .category-container {
+    @include dark-card;
+    .category-wrapper {
+      a {
+        @include dark-link-standard;
+      }
+    }
+  }
+}
