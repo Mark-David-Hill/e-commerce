@@ -27,3 +27,15 @@
     }
   }
 }
+
+.App.dark-mode {
+  .product-container {
+    .product-wrapper {
+      .product-text-wrapper {
+        button {
+          @include dark-link-standard;
+        }
+      }
+    }
+  }
+}

@@ -38,7 +38,7 @@
 
 @mixin dark-card() {
   color: $dark-mode-light;
-  background-color: #494b50;
+  background-color: $dark-mode-gray;
   border-color: black;
 }
 

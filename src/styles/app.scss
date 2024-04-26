@@ -7,11 +7,35 @@ body {
   min-height: 100vh;
   justify-content: space-between;
   color: $dark;
+
+  button {
+    border: 1px solid $dark;
+  }
 }
 
 .App.dark-mode {
   color: $dark-mode-light;
   background-color: rgb(39, 39, 39);
+
+  button {
+    @include dark-link-standard;
+  }
+
+  form {
+    input,
+    textarea {
+      background-color: $dark-mode-gray;
+      color: $dark-mode-light;
+
+      &::placeholder {
+        color: $dark-placeholder;
+      }
+    }
+
+    input[type="submit"] {
+      @include dark-link-standard;
+    }
+  }
 }
 
 .modal-content-wrapper {

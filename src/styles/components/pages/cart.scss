@@ -49,3 +49,13 @@
     }
   }
 }
+
+.App.dark-mode {
+  .cart-container {
+    .cart-checkout-wrapper {
+      button {
+        @include dark-link-standard;
+      }
+    }
+  }
+}

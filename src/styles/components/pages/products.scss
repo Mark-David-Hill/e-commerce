@@ -43,3 +43,21 @@
     }
   }
 }
+
+.App.dark-mode {
+  .products-container {
+    .search-section {
+      .search-wrapper {
+        select,
+        input {
+          background-color: $dark-mode-gray;
+          color: $dark-mode-light;
+
+          &::placeholder {
+            color: $dark-placeholder;
+          }
+        }
+      }
+    }
+  }
+}
