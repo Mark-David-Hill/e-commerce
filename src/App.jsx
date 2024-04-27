@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import icons from "./helpers/icons";
 
+import { CartContext } from "./components/context/CartProvider";
 import Products from "./components/pages/Products";
 import Product from "./components/pages/Product";
 import Contact from "./components/pages/Contact";
@@ -18,12 +19,12 @@ import "./styles/main.scss";
 icons();
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const { isDarkMode } = useContext(CartContext);
 
   return (
     <div className={"App " + (isDarkMode && "dark-mode")}>
       <BrowserRouter>
-        <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+        <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/products" component={Products} />

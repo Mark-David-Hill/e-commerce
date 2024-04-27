@@ -4,12 +4,15 @@ export const CartContext = createContext();
 export default function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const cartState = {
     cartItems,
     setCartItems,
     categories,
     setCategories,
+    isDarkMode,
+    setIsDarkMode,
   };
 
   useEffect(() => {

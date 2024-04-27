@@ -1,19 +1,42 @@
+import { useContext } from "react";
 import ReactModal from "react-modal";
 
+import { CartContext } from "../context/CartProvider";
+
+const basicStyles = {
+  top: "50%",
+  left: "50%",
+  right: "auto",
+  bottom: "auto",
+  marginRight: "-50%",
+  transform: "translate(-50%, -50%)",
+};
+
 const customStyles = {
+  overlay: {
+    backgroundColor: "rgba(150, 150, 150, 0.5)",
+  },
   content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
+    ...basicStyles,
+    backgroundColor: "white",
+  },
+};
+
+const customDarkStyles = {
+  overlay: {
+    backgroundColor: "rgba(0, 0, 0, 0.75)",
+  },
+  content: {
+    ...basicStyles,
+    backgroundColor: "#494b50",
+    color: "rgb(232, 236, 238)",
   },
 };
 
 ReactModal.setAppElement("#root");
 
 export default function Modal(props) {
+  const { isDarkMode } = useContext(CartContext);
   const { modalType, modalIsOpen, setModalIsOpen, message, handleClickYes } =
     props;
 
@@ -31,10 +54,10 @@ export default function Modal(props) {
       <ReactModal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
+        style={isDarkMode ? customDarkStyles : customStyles}
+        contentLabel="Base Modal"
       >
-        <div className="modal-content-wrapper">
+        <div className={"modal-content-wrapper " + (isDarkMode && "dark-mode")}>
           <div className="modal-close-wrapper">
             <button onClick={closeModal}>x</button>
           </div>
