@@ -80,11 +80,15 @@
 
 @media screen and (max-width: 700px) {
   .navbar-container {
-    .main-links {
-      display: flex;
-      gap: 3vw;
-      a {
-        padding: 6px;
+    .links-container {
+      gap: 3px;
+
+      .main-links {
+        display: flex;
+        gap: 3vw;
+        a {
+          padding: 6px;
+        }
       }
     }
 
