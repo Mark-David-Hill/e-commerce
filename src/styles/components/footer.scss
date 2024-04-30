@@ -2,9 +2,10 @@
   background-color: $primary;
   color: $secondary;
   width: 100vw;
-  height: 15vw;
-  max-height: 80px;
+  padding: 20px;
   display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
   justify-content: space-around;
   align-items: center;
   border-top: 2px solid darkslategray;

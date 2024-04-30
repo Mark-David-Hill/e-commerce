@@ -14,7 +14,7 @@ export default function Navbar(props) {
     <div className="navbar-container">
       <div className="navbar-wrapper">
         <NavLink to="/">
-          <img src={logo} alt="Logo" />
+          <img src={logo} alt="Logo" onClick={() => setMenuIsOpen(false)} />
         </NavLink>
         <div className="links-container">
           <div className="main-links">
@@ -53,7 +53,10 @@ export default function Navbar(props) {
           </div>
         </div>
       </div>
-      <div className={"hamburger-menu-wrapper " + (menuIsOpen && "show-menu")}>
+      <div
+        className={"hamburger-menu-wrapper " + (menuIsOpen && "show-menu")}
+        onClick={() => setMenuIsOpen(false)}
+      >
         <NavLink to="/products">Products</NavLink>
         <NavLink to="/about">About</NavLink>
         <NavLink to="/contact">Contact</NavLink>

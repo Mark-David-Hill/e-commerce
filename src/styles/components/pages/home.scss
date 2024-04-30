@@ -1,5 +1,6 @@
 .home-container {
   width: 100vw;
+
   .hero-section {
     @include flex-col-center;
     justify-content: center;
@@ -10,6 +11,7 @@
     background-image: url("/assets/hero.jpg");
     background-size: 100% auto;
     background-repeat: no-repeat;
+
     h1 {
       margin-top: 5vw;
       width: 35vw;
@@ -41,6 +43,7 @@
   .home-container {
     .hero-section {
       margin-top: 11vw;
+
       h1 {
         width: 48vw;
         font-size: 5vw;
