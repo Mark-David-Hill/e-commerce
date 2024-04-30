@@ -4,6 +4,7 @@ import {
   faTrash,
   faSortUp,
   faSortDown,
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
@@ -17,6 +18,7 @@ export default function initIcons() {
     faTrash,
     faSortUp,
     faSortDown,
-    faGithub
+    faGithub,
+    faBars
   );
 }
