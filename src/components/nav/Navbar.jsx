@@ -6,8 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logo from "../../assets/logo.png";
 
 export default function Navbar(props) {
-  const { cartItems, setIsDarkMode } = useContext(CartContext);
-  const { isDarkMode } = props;
+  const { cartItems, isDarkMode, setIsDarkMode } = useContext(CartContext);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
 
   return (
